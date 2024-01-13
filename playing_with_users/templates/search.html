@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>All My Friends</title>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <p class="h1">Hello New Friend!</p>
+            <p class="h5">Are you looking for someone specific?</p>
+            <p class="h5">You can search for one of my friends by their ID number below...</p>
+        </div>
+        <form action="/search/process" method="POST">
+            <div class="row">
+                <div class="input-group">
+                    <div class="col">
+                        <label for="id">ID:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="id">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <button class="btn btn-primary" type="submit">Enter Info</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

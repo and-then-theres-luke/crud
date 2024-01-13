@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>Users CR - Create Entry</title>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <p class="h1">Create New Entry</p>
+        </div>
+        <form action="/create" method="POST">
+            <div class="row">
+                <div class="input-group">
+                    <div class="col">
+                        <label for="first_name">First Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="first_name" placeholder="First Name...">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="col">
+                        <label for="last_name">Last Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="last_name" placeholder="Last Name...">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="col">
+                        <label for="occupation">Occupation:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="occupation" placeholder="Occupation">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div class="col">
+                        <button class="btn btn-primary" type="submit">Submit Entry</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

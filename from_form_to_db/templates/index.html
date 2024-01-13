@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>All My friends</title>
+</head>
+<body>
+    <main class="container">
+        <div class="row text-center">
+            <p class="h1">Hello! These are all of my friends!!</p>
+            <p class="h5">Do you want to be my friend?</p>
+            <form action="/register" method="get">
+                <button action="submit" class="btn">Yup!</button>
+            </form>
+        </div>
+            {% for one_friend in all_friends %}
+            <p>First Name: {{one_friend.first_name}}</p>
+            <p>Last Name: {{one_friend.last_name}}</p>
+            <p>Occupation: {{one_friend.occupation}}</p>
+            <hr>
+            {% endfor %}
+    </main>
+    
+    
+</body>
+</html>

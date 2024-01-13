@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+    <title>Dojos</title>
+</head>
+<body>
+    <div class="container d-flex flex-column">
+        <div class="row">
+            <p class="h1">All Ninjas in dojo_name</p>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ninja in one_dojo %}
+                <tr>
+                    <td>
+                        {{ninja.first_name}} 
+                    </td>
+                    <td>
+                        {{ninja.last_name}}
+                    </td>
+                    <td>
+                        {{ninja.age}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="row">
+            <a href="/"><button class="btn btn-primary">Return to Dojo List</button></a>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->

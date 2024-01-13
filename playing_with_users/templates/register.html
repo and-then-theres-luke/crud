@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>All My Friends</title>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <p class="h1">Hello New Friend!</p>
+            <p class="h5">Let's get some vitals so I can get you in my database. This won't hurt.</p>
+        </div>
+        <form action="/process" method="post">
+            <div class="row">
+                <div class="input-group">
+                    <div class="col">
+                        <label for="fname">First Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="fname">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <div class="col">
+                        <label for="lname">Last Name:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="lname">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-group">
+                    <div class="col">
+                        <label for="occ">Occupation:</label>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="occ">
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <button class="btn btn-primary" type="submit">Enter Info</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
