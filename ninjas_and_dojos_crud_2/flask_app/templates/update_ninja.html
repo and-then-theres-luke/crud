@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
+    <title>Dojos</title>
+</head>
+<body>
+    <div class="container d-flex flex-column">
+        <div class="row">
+            <div class="col-sm">
+                <p class="h1">Edit Ninja</p>
+                <form action="/ninjas/update/process" method="POST">
+                    <input type="hidden" name="dojo_id" value="{{one_ninja.dojo_id}}">
+                    <input type="hidden" name="id" id="id" value="{{one_ninja.id}}">
+                    <div class="input-group">
+                        <label for="first_name">First Name:</label>
+                        <input type="text" id="first_name" name="first_name" value="{{one_ninja.first_name}}">
+                    </div>
+                    <div class="input-group">
+                        <label for="name">Last Name:</label>
+                        <input type="text" id="last_name" name="last_name" value="{{one_ninja.last_name}}">
+                    </div>
+                    <div class="input-group">
+                        <label for="age">Age:</label>
+                        <input type="text" id="age" name="age" value="{{one_ninja.age}}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <a href="/"><button class="btn btn-primary">Return Home</button></a>
+            </div>
+        </div>
+</body>
+</html>
+
+<!-- Format for adding images -->
+<!-- <img src="{{ url_for('static', filename='images/img.png') }}"> -->
