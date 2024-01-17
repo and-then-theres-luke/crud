@@ -1,32 +1,38 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import user # import entire file, rather than class, to avoid circular imports
+from flask_app.models import author # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
 # Create Users Controller
+@app.route("/author/create", methods=["POST"])
+def create_author_frontend():
+    author.Author.create_author(request.form)
+    return redirect("/")
 
 
 
-# Read Users Controller
+# Read All Authors Controller
 
 @app.route('/')
 def index():
-    return render_template('index.html')
-
-
-@app.route("/test")
-def test():
-    a_list = ["Levi","Levi","Levi"]
-    is_true = True
-    for person in a_list:
-        if person.lower().find("luke") >= 0:
-            is_true = False
-            return is_true
-        else:
-            pass
+    return redirect("/authors")
     
-    return render_template('test.html', is_true = is_true)
+@app.route('/authors')
+def show_all_authors_frontend():
+    all_authors = author.Author.get_all_authors()
+    return render_template('authors.html', all_authors = all_authors)
+
+# Read One Author Controller
+
+@app.route("/authors/<int:id>")
+def show_one_author_frontend(id):
+    data = {
+        'id' : id
+    }
+    one_author = author.Author.get_one_author(data)
+    return render_template("authors_show.html", one_author = one_author)
+
 
 # Update Users Controller
 
@@ -34,6 +40,16 @@ def test():
 
 # Delete Users Controller
 
+
+
+# TEST
+@app.route("/test")
+def show_one_author_frontend_test():
+    data = {
+        'id' : 1
+    }
+    one_author = author.Author.get_one_author_and_favorites_test(data)
+    return render_template("test.html", one_author = one_author)
 
 # Notes:
 # 1 - Use meaningful names

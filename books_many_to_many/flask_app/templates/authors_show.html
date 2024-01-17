@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- Above is how we link our style sheet. url_for creates a url based on the static folder, and file name given -->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}" defer></script>
-    <!-- Above is how we link our JS file. Make sure that you understand why we use defer -->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Flask Template: Index.html</h1>
-    <p>Change this file as needed.</p>
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h1">{{one_author.name}}'s Favorites</p>
+            </div>
+        
+        </div>
+    </main>
 </body>
 </html>
 

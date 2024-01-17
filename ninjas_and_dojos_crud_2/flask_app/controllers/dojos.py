@@ -38,10 +38,10 @@ def dojos():
 @app.route("/dojos/<int:id>")
 def show_dojo(id):
     data = {
-        'id' : id
+        "id" : id
     }
     one_dojo = dojo.Dojo.get_one_dojo(data)
-    one_dojo.ninjas = ninja.Ninja.populate_dojo(data)
+    print(one_dojo)
     return render_template("dojo_show.html", one_dojo = one_dojo)
 
     
@@ -74,17 +74,7 @@ def delete_ninja_frontend(id):
     return redirect(return_statement)
 
 
-# TEST
 
-@app.route("/test")
-def test_route():
-    data = {
-        "id" : 1
-    }
-    one_dojo = dojo.Dojo.get_one_dojo_test(data)
-    print(one_dojo)
-    return render_template("test.html", one_dojo = one_dojo)
-    
 
 # Notes:
 # 1 - Use meaningful names

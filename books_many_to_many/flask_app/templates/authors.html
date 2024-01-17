@@ -4,18 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.css">
     <title>Document</title>
 </head>
 <body>
-    <div class="row">
-        <div class="col">
-            <p>Hello World!</p>
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <p class="h1">New Author</p>
+                <form action="/author/create" method="POST">
+                    <div class="input-group">
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col">
+                <p class="h1">All Authors</p>
+                {% for author in all_authors %}
+                <a href="/authors/{{author.id}}"><p>{{author.name}}</p></a>
+                {% endfor %}
+            </div>
         </div>
-        <div class="col">
-            <p>Hello You!</p>
-        </div>
-    </div>
+    </main>
 </body>
 </html>
 
