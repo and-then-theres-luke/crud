@@ -70,12 +70,21 @@ def delete_ninja_frontend(id):
     one_ninja = ninja.Ninja.get_one_ninja(data)
     return_statement = f"""/dojos/{one_ninja.dojo_id}"""
     ninja.Ninja.delete_ninja(data)
+    print("This is the dojo id of the ninja I deleted,", one_ninja.dojo_id)
     return redirect(return_statement)
 
 
 # TEST
 
-
+@app.route("/test")
+def test_route():
+    data = {
+        "id" : 1
+    }
+    one_dojo = dojo.Dojo.get_one_dojo_test(data)
+    print(one_dojo)
+    return render_template("test.html", one_dojo = one_dojo)
+    
 
 # Notes:
 # 1 - Use meaningful names

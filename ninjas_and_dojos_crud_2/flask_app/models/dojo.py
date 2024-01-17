@@ -46,17 +46,20 @@ class Dojo:
         for dojo in result:
             all_dojos.append(cls(dojo))
         return all_dojos
-
-    @classmethod
-    def get_one_dojo(cls, data):
-        query = """
-        SELECT * FROM dojos 
-        WHERE id = %(id)s;
-        """
-        result = connectToMySQL(cls.db).query_db(query, data)
-        one_dojo = cls(result[0])
-        return one_dojo
     
-
-
-
+    @classmethod
+    def get_one_dojo(cls,data):
+        query = """
+        SELECT * FROM dojos
+        LEFT JOIN ninjas
+        ON dojos.id = ninjas.dojo_id
+        WHERE dojos.id = %(id)s"""
+        results = connectToMySQL(cls.db).query_db(query,data)
+        print(results)
+        # I'm trying to make an object of a dojo in one statement. This statement collects EVERYTHING about the dojo.
+        one_dojo = cls(results[0])
+        print("This is my dojo object,", one_dojo)
+        one_dojo.ninjas = ninja.Ninja.populate_dojo(results)
+        print("If this all works, this should be a list of ninja objects")
+        return one_dojo
+        

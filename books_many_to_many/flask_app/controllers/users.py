@@ -15,6 +15,19 @@ def index():
     return render_template('index.html')
 
 
+@app.route("/test")
+def test():
+    a_list = ["Levi","Levi","Levi"]
+    is_true = True
+    for person in a_list:
+        if person.lower().find("luke") >= 0:
+            is_true = False
+            return is_true
+        else:
+            pass
+    
+    return render_template('test.html', is_true = is_true)
+
 # Update Users Controller
 
 

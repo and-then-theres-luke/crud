@@ -45,19 +45,6 @@ class Ninja:
         one_ninja = cls(results[0])
         return one_ninja
     
-    @classmethod
-    def populate_dojo(cls, data):
-        query = """
-        SELECT *
-        FROM ninjas
-        WHERE dojo_id = %(id)s;
-        """
-        list_of_ninjas = connectToMySQL(cls.db).query_db(query,data)
-        dojo_roster = []
-        for ninja in list_of_ninjas:
-            dojo_roster.append(cls(ninja))
-        return dojo_roster
-
     # Update Ninja Models
     @classmethod
     def update_ninja(cls, data):
@@ -84,3 +71,12 @@ class Ninja:
         """
         connectToMySQL(cls.db).query_db(query,data)
         return
+
+    # dojo.Dojo.get_one_dojo relies on this method when constructing a dojo object
+    @classmethod
+    def populate_dojo(cls, data):
+        class_roster = []
+        for ninja in data:
+            class_roster.append(cls(ninja))
+            print(ninja)
+        return class_roster
