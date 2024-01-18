@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, redirect, request, session
-from flask_app.models import author # import entire file, rather than class, to avoid circular imports
+from flask_app.models import author, book # import entire file, rather than class, to avoid circular imports
 # As you add model files add them the the import above
 # This file is the second stop in Flask's thought process, here it looks for a route that matches the request
 
@@ -30,8 +30,9 @@ def show_one_author_frontend(id):
     data = {
         'id' : id
     }
-    one_author = author.Author.get_one_author(data)
-    return render_template("authors_show.html", one_author = one_author)
+    one_author = author.Author.get_one_author_and_favorites(data)
+    all_books = book.Book.get_all_books_minus_favorites(one_author)
+    return render_template("test.html", one_author = one_author, all_books = all_books)
 
 
 # Update Users Controller
@@ -44,11 +45,11 @@ def show_one_author_frontend(id):
 
 # TEST
 @app.route("/test")
-def show_one_author_frontend_test():
+def show_one_author_frontend_test(id):
     data = {
-        'id' : 1
+        'id' : id
     }
-    one_author = author.Author.get_one_author_and_favorites_test(data)
+    one_author = author.Author.get_one_author_and_favorites(data)
     return render_template("test.html", one_author = one_author)
 
 # Notes:

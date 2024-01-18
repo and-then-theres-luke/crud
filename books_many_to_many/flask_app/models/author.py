@@ -62,6 +62,21 @@ class Author:
         print("Info getting sent back by get_all_authors", all_authors)
         return all_authors
 
+    @classmethod
+    def get_one_author_and_favorites(cls,data):
+        query = """
+        SELECT * FROM authors
+        LEFT JOIN favorites
+        ON authors.id = favorites.author_id
+        JOIN books
+        ON favorites.book_id = books.id
+        WHERE authors.id = %(id)s
+        ;
+        """
+        results = connectToMySQL(cls.db).query_db(query,data)
+        one_author = cls(results[0])
+        one_author.favorites = book.Book.populate_favorites(results)
+        return one_author
 
     # Update Author Models
 
@@ -71,27 +86,3 @@ class Author:
     
     
     # TEST
-    @classmethod
-    def get_one_author_and_favorites_test(cls,data):
-        query = """
-        SELECT * FROM authors
-        LEFT JOIN favorites
-        ON authors.id = favorites.user_id
-        LEFT JOIN books
-        ON favorites.book_id = books.id
-        ;
-        """
-        results = connectToMySQL(cls.db).query_db(query)
-        for author in results:
-            if author['id'] != data['id']:
-                pass
-            else:
-                one_author = cls(author)
-        print("one_author,", one_author)
-        one_author.favorites = book.Book.populate_favorites(results)
-        all_books = []
-        for one_book in results:
-            all_books.append(book.Book(one_book))
-        print("all_books,", all_books)
-        one_author.all_books = all_books
-        return one_author

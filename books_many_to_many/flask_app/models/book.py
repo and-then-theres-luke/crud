@@ -60,6 +60,21 @@ class Book:
         return all_books
 
     @classmethod
+    def get_all_books_minus_favorites(cls, one_author):
+        all_books_ever = Book.get_all_books()
+        for one_fav in one_author.favorites:
+            #this will iterate for each book in favorites
+            for one_book in range(0,len(all_books_ever)-1):
+                #remember that this is an integer as we cycle doing comparisons between the fav book and the one book
+                if one_fav.title == all_books_ever[one_book].title:
+                    all_books_ever.pop(one_book)
+                else:
+                    pass
+        return all_books_ever
+                
+            
+    
+    @classmethod
     def populate_favorites(cls,data):
         favorite_books = []
         for book in data:
